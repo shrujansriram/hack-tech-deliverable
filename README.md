@@ -127,4 +127,5 @@ application!
 ## Attributions
 
 Background: @davidhdev on reactbits.dev
+
 Quote Cards: @ilkhoeri on uiverse.io
