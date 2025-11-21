@@ -1,3 +1,11 @@
+/* Global dark background */
+body, html {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: #121212;
+}
+
 .App {
     max-width: 800px;
     margin: 0 auto;
@@ -5,37 +13,65 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;
+    position: relative;
+    min-height: 100vh;
 }
 
-/* NEW: Logo styles */
+/* Background layer */
+.background-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Content wrapper */
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
 .app-logo {
     display: block;
     margin: 0 auto 20px;
     max-width: 200px;
     height: auto;
+    position: relative;
+    z-index: 2;
+    filter: brightness(1.2);
 }
 
 h1 {
-    color: #333;
+    color: #ffffff;
     text-align: center;
     margin-bottom: 30px;
     font-size: 2em;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 h2 {
-    color: #555;
-    border-bottom: 2px solid #0066cc;
+    color: #ffffff;
+    border-bottom: 2px solid #5227FF;
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
 
-/* Quote Form Styles */
+/* Quote Form Styles - Dark Theme */
 .quote-form-section {
-    background: #f9f9f9;
+    background: rgba(30, 30, 30, 0.9);
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 40px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .quote-form {
@@ -46,52 +82,64 @@ h2 {
 
 .quote-form label {
     font-weight: 600;
-    color: #333;
+    color: #e0e0e0;
     margin-bottom: 5px;
 }
 
 .quote-form input {
     padding: 12px;
-    border: 2px solid #ddd;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 4px;
     font-size: 16px;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, background-color 0.3s;
+    background: rgba(50, 50, 50, 0.8);
+    color: #ffffff;
+}
+
+.quote-form input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .quote-form input:focus {
     outline: none;
-    border-color: #0066cc;
+    border-color: #5227FF;
+    background: rgba(60, 60, 60, 0.9);
 }
 
 .quote-form input:disabled {
-    background-color: #e9e9e9;
+    background-color: rgba(40, 40, 40, 0.8);
     cursor: not-allowed;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .quote-form button {
     padding: 12px 24px;
-    background-color: #0066cc;
+    background: linear-gradient(135deg, #5227FF, #FF9FFC);
     color: white;
     border: none;
     border-radius: 4px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: transform 0.2s, box-shadow 0.3s;
+    position: relative;
 }
 
 .quote-form button:hover:not(:disabled) {
-    background-color: #0052a3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(82, 39, 255, 0.5);
 }
 
 .quote-form button:disabled {
-    background-color: #999;
+    background: rgba(100, 100, 100, 0.5);
     cursor: not-allowed;
 }
 
 /* Quote List Styles */
 .quote-list-section {
     margin-top: 40px;
+    position: relative;
+    z-index: 2;
 }
 
 .quote-list-header {
@@ -110,25 +158,27 @@ h2 {
 
 .time-filter-dropdown {
     padding: 10px 15px;
-    border: 2px solid #0066cc;
+    border: 2px solid rgba(82, 39, 255, 0.6);
     border-radius: 4px;
-    background-color: white;
-    color: #333;
+    background-color: rgba(30, 30, 30, 0.9);
+    color: #ffffff;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s;
     outline: none;
+    position: relative;
 }
 
 .time-filter-dropdown:hover {
-    background-color: #f0f7ff;
-    border-color: #0052a3;
+    background-color: rgba(40, 40, 40, 0.95);
+    border-color: #5227FF;
+    box-shadow: 0 0 8px rgba(82, 39, 255, 0.4);
 }
 
 .time-filter-dropdown:focus {
-    border-color: #0052a3;
-    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    border-color: #FF9FFC;
+    box-shadow: 0 0 12px rgba(255, 159, 252, 0.4);
 }
 
 .messages {
@@ -139,53 +189,13 @@ h2 {
 
 .no-quotes {
     text-align: center;
-    color: #999;
+    color: rgba(255, 255, 255, 0.7);
     font-style: italic;
     padding: 40px;
-    background: #f9f9f9;
+    background: rgba(30, 30, 30, 0.8);
     border-radius: 8px;
-}
-
-/* Individual Quote Item Styles */
-.quote-item {
-    background: #ffffff;
-    border-left: 4px solid #0066cc;
-    padding: 20px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.quote-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.quote-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.quote-name {
-    color: #0066cc;
-    font-size: 1.1em;
-}
-
-.quote-time {
-    color: #666;
-    font-size: 0.85em;
-    font-style: italic;
-}
-
-.quote-message {
-    color: #333;
-    margin: 0;
-    line-height: 1.6;
-    font-size: 1em;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Responsive Design */
@@ -194,7 +204,6 @@ h2 {
         padding: 10px;
     }
 
-    /* NEW: Smaller logo on mobile */
     .app-logo {
         max-width: 150px;
     }
@@ -205,15 +214,6 @@ h2 {
 
     .quote-form-section {
         padding: 15px;
-    }
-
-    .quote-item {
-        padding: 15px;
-    }
-
-    .quote-header {
-        flex-direction: column;
-        align-items: flex-start;
     }
 
     .quote-list-header {

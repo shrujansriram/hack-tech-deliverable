@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import QuoteForm from "./components/QuoteForm";
 import QuoteList from "./components/QuoteList";
-import logo from "./assets/quotebook.png";  // ← UPDATED: Changed to quotebook.png
+import LiquidEther from "./components/LiquidEther";
+import logo from "./assets/quotebook.png";
 
 function App() {
     const [quotes, setQuotes] = useState([]);
@@ -74,17 +75,41 @@ function App() {
 
     return (
         <div className="App">
-            <img src={logo} alt="Quote Book Logo" className="app-logo" />
-            
-            <h1>Hack at UCI Tech Deliverable</h1>
-            
-            <QuoteForm onSubmit={handleQuoteSubmit} />
-            
-            <QuoteList 
-                quotes={getFilteredQuotes()} 
-                timeFilter={timeFilter}
-                onFilterChange={handleFilterChange}
-            />
+            {/* Background layer with DARK colors */}
+            <div className="background-layer">
+                <LiquidEther
+                    colors={['#2D1B69', '#1A1A3E', '#4A1E7C', '#6B2D9E']}
+                    mouseForce={25}
+                    cursorSize={120}
+                    isViscous={false}
+                    viscous={30}
+                    iterationsViscous={32}
+                    iterationsPoisson={32}
+                    resolution={0.5}
+                    isBounce={false}
+                    autoDemo={true}
+                    autoSpeed={0.4}
+                    autoIntensity={2.5}
+                    takeoverDuration={0.25}
+                    autoResumeDelay={3000}
+                    autoRampDuration={0.6}
+                />
+            </div>
+
+            {/* Content wrapper */}
+            <div className="content-wrapper">
+                <img src={logo} alt="Quote Book Logo" className="app-logo" />
+                
+                <h1>Hack at UCI Tech Deliverable</h1>
+                
+                <QuoteForm onSubmit={handleQuoteSubmit} />
+                
+                <QuoteList 
+                    quotes={getFilteredQuotes()} 
+                    timeFilter={timeFilter}
+                    onFilterChange={handleFilterChange}
+                />
+            </div>
         </div>
     );
 }
