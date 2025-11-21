@@ -1,4 +1,4 @@
-import QuoteItem from "./QuoteItem";
+import QuoteCard from "./QuoteCard";
 
 function QuoteList({ quotes, timeFilter, onFilterChange }) {
     return (
@@ -22,7 +22,7 @@ function QuoteList({ quotes, timeFilter, onFilterChange }) {
                     <p className="no-quotes">No quotes found for the selected time period.</p>
                 ) : (
                     quotes.map((quote, index) => (
-                        <QuoteItem 
+                        <QuoteCard 
                             key={`${quote.name}-${quote.time}-${index}`} 
                             quote={quote} 
                         />
