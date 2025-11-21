@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import QuoteForm from "./components/QuoteForm";
 import QuoteList from "./components/QuoteList";
+import logo from "./assets/quotebook.png";  // ← UPDATED: Changed to quotebook.png
 
 function App() {
     const [quotes, setQuotes] = useState([]);
@@ -73,7 +74,8 @@ function App() {
 
     return (
         <div className="App">
-            {/* TODO: include an icon for the quote book */}
+            <img src={logo} alt="Quote Book Logo" className="app-logo" />
+            
             <h1>Hack at UCI Tech Deliverable</h1>
             
             <QuoteForm onSubmit={handleQuoteSubmit} />
