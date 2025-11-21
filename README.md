@@ -122,3 +122,9 @@ GitHub repository, push your changes to there, and provide the link to it in
 the Airtable form for your application. Once again, thank you for your interest
 in applying to the Hack at UCI Tech team and we look forward to reviewing your
 application!
+
+
+## Attributions
+
+Background: @davidhdev on reactbits.dev
+Quote Cards: @ilkhoeri on uiverse.io
