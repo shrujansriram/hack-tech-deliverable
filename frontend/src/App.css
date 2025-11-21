@@ -1,0 +1,168 @@
+.App {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+h2 {
+    color: #555;
+    border-bottom: 2px solid #0066cc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Quote Form Styles */
+.quote-form-section {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.quote-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.quote-form label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.quote-form input {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.quote-form input:focus {
+    outline: none;
+    border-color: #0066cc;
+}
+
+.quote-form input:disabled {
+    background-color: #e9e9e9;
+    cursor: not-allowed;
+}
+
+.quote-form button {
+    padding: 12px 24px;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.quote-form button:hover:not(:disabled) {
+    background-color: #0052a3;
+}
+
+.quote-form button:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+}
+
+/* Quote List Styles */
+.quote-list-section {
+    margin-top: 40px;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.no-quotes {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 40px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+/* Individual Quote Item Styles */
+.quote-item {
+    background: #ffffff;
+    border-left: 4px solid #0066cc;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.quote-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.quote-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.quote-name {
+    color: #0066cc;
+    font-size: 1.1em;
+}
+
+.quote-time {
+    color: #666;
+    font-size: 0.85em;
+    font-style: italic;
+}
+
+.quote-message {
+    color: #333;
+    margin: 0;
+    line-height: 1.6;
+    font-size: 1em;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .App {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .quote-form-section {
+        padding: 15px;
+    }
+
+    .quote-item {
+        padding: 15px;
+    }
+
+    .quote-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
