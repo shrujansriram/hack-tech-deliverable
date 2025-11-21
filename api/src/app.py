@@ -8,15 +8,12 @@ from typing_extensions import TypedDict
 
 from services.database import JSONDatabase
 
-
 class Quote(TypedDict):
     name: str
     message: str
     time: str
 
-
 database: JSONDatabase[list[Quote]] = JSONDatabase("data/database.json")
-
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
@@ -29,9 +26,12 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
 
     database.close()
 
-
 app = FastAPI(lifespan=lifespan)
 
+@app.get("/quote")
+def get_quotes() -> list[Quote]:
+    """Retrieve all quotes from the database."""
+    return database["quotes"]
 
 @app.post("/quote")
 def post_message(name: str = Form(), message: str = Form()) -> RedirectResponse:
@@ -45,6 +45,3 @@ def post_message(name: str = Form(), message: str = Form()) -> RedirectResponse:
 
     # You may modify the return value as needed to support other functionality
     return RedirectResponse("/", status.HTTP_303_SEE_OTHER)
-
-
-# TODO: add another API route with a query parameter to retrieve quotes based on max age
