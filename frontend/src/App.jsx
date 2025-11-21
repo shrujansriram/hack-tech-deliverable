@@ -5,6 +5,7 @@ import QuoteList from "./components/QuoteList";
 
 function App() {
     const [quotes, setQuotes] = useState([]);
+    const [timeFilter, setTimeFilter] = useState("all");
 
     useEffect(() => {
         fetchQuotes();
@@ -35,6 +36,41 @@ function App() {
         }
     };
 
+    const handleFilterChange = (filter) => {
+        setTimeFilter(filter);
+    };
+
+    const getFilteredQuotes = () => {
+        if (timeFilter === "all") {
+            return quotes;
+        }
+
+        const now = new Date();
+        let cutoffDate = new Date();
+
+        switch (timeFilter) {
+            case "oneday":
+                cutoffDate.setDate(now.getDate() - 1);
+                break;
+            case "lastweek":
+                cutoffDate.setDate(now.getDate() - 7);
+                break;
+            case "lastmonth":
+                cutoffDate.setMonth(now.getMonth() - 1);
+                break;
+            case "lastyear":
+                cutoffDate.setFullYear(now.getFullYear() - 1);
+                break;
+            default:
+                return quotes;
+        }
+
+        return quotes.filter(quote => {
+            const quoteDate = new Date(quote.time);
+            return quoteDate >= cutoffDate;
+        });
+    };
+
     return (
         <div className="App">
             {/* TODO: include an icon for the quote book */}
@@ -42,7 +78,11 @@ function App() {
             
             <QuoteForm onSubmit={handleQuoteSubmit} />
             
-            <QuoteList quotes={quotes} />
+            <QuoteList 
+                quotes={getFilteredQuotes()} 
+                timeFilter={timeFilter}
+                onFilterChange={handleFilterChange}
+            />
         </div>
     );
 }
